@@ -115,16 +115,18 @@ export function ProjectsSection() {
               return (
                 <Card 
                   key={project.title} 
-                  className={`flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:shadow-xl border-border ${
-                    project.featured ? "border-primary/50 shadow-md bg-card/80" : ""
+                  className={`flex flex-col justify-between glass-card glass-card-hover rounded-2xl p-2 transition-all duration-300 ${
+                    project.featured ? "border-primary/50 shadow-lg shadow-indigo-500/10" : ""
                   }`}
                 >
                   <CardHeader>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-primary/10 text-primary">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">
                         {project.category}
                       </span>
-                      <Icon className="h-5 w-5 text-primary" />
+                      <div className="p-2 rounded-xl bg-primary/10 text-primary">
+                        <Icon className="h-5 w-5" />
+                      </div>
                     </div>
                     <CardTitle className="text-xl font-bold text-foreground leading-tight">
                       {project.title}
@@ -144,7 +146,7 @@ export function ProjectsSection() {
                         {project.tech.map((t) => (
                           <span 
                             key={t} 
-                            className="px-2 py-0.5 bg-muted text-muted-foreground rounded text-xs font-medium"
+                            className="px-2.5 py-0.5 bg-secondary/80 text-foreground/90 rounded-md text-xs font-medium border border-border/40"
                           >
                             {t}
                           </span>
@@ -155,7 +157,7 @@ export function ProjectsSection() {
                         onClick={() => window.open(project.github, "_blank")}
                         variant="default"
                         size="sm"
-                        className="w-full transition-transform duration-200 hover:scale-[1.02]"
+                        className="w-full font-semibold rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground shadow-md transition-all duration-300 hover:scale-[1.02]"
                       >
                         <Github className="mr-2 h-4 w-4" />
                         View Repository
@@ -166,6 +168,7 @@ export function ProjectsSection() {
               )
             })}
           </div>
+
         </div>
       </div>
     </section>
