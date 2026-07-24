@@ -38,7 +38,7 @@ export function SkillsSection() {
     <section id="skills" className="py-24 relative overflow-hidden bg-grid-pattern">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         <div className="max-w-5xl mx-auto">
-          
+
           {/* Section Header */}
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border-cyan-500/30 mb-4">
@@ -54,8 +54,8 @@ export function SkillsSection() {
             {skillCategories.map((category) => {
               const Icon = category.icon
               return (
-                <Card 
-                  key={category.title} 
+                <Card
+                  key={category.title}
                   className={`glass-card glass-card-hover rounded-3xl border border-white/10 overflow-hidden bg-gradient-to-br ${category.gradient}`}
                 >
                   <CardHeader className="pb-4">

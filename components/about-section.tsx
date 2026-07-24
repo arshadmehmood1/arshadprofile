@@ -37,7 +37,7 @@ export function AboutSection() {
     <section id="about" className="py-24 relative overflow-hidden bg-dots-pattern">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         <div className="max-w-5xl mx-auto">
-          
+
           {/* Section Header */}
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border-indigo-500/30 mb-4">
@@ -54,8 +54,8 @@ export function AboutSection() {
             {stats.map((stat, i) => {
               const Icon = stat.icon
               return (
-                <div 
-                  key={i} 
+                <div
+                  key={i}
                   className="glass-card glass-card-hover p-5 rounded-2xl border border-white/10 text-center flex flex-col items-center justify-center"
                 >
                   <div className="p-2.5 rounded-xl bg-white/5 mb-2">
@@ -81,8 +81,8 @@ export function AboutSection() {
             {pillars.map((pillar, i) => {
               const Icon = pillar.icon
               return (
-                <Card 
-                  key={i} 
+                <Card
+                  key={i}
                   className={`glass-card glass-card-hover rounded-2xl border bg-gradient-to-b ${pillar.color} p-6 transition-all duration-300`}
                 >
                   <CardContent className="p-0">

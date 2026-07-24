@@ -34,7 +34,7 @@ export function EducationSection() {
     <section id="education" className="py-24 relative overflow-hidden bg-grid-pattern">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         <div className="max-w-4xl mx-auto">
-          
+
           {/* Section Header */}
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border-purple-500/30 mb-4">
@@ -50,20 +50,18 @@ export function EducationSection() {
           <div className="relative border-l-2 border-indigo-500/30 ml-4 sm:ml-8 pl-6 sm:pl-10 space-y-10">
             {education.map((edu, index) => (
               <div key={index} className="relative group">
-                
+
                 {/* Glowing Node Indicator */}
-                <div 
-                  className={`absolute -left-[31px] sm:-left-[47px] top-1.5 w-6 h-6 rounded-full border-4 ${
-                    edu.current 
-                      ? "bg-emerald-400 border-slate-950 shadow-lg shadow-emerald-500/50 animate-pulse" 
+                <div
+                  className={`absolute -left-[31px] sm:-left-[47px] top-1.5 w-6 h-6 rounded-full border-4 ${edu.current
+                      ? "bg-emerald-400 border-slate-950 shadow-lg shadow-emerald-500/50 animate-pulse"
                       : "bg-indigo-500 border-slate-950 shadow-md shadow-indigo-500/30"
-                  }`} 
+                    }`}
                 />
 
-                <Card 
-                  className={`glass-card glass-card-hover rounded-3xl p-6 border transition-all duration-300 ${
-                    edu.current ? "border-indigo-500/50 shadow-xl shadow-indigo-500/10" : "border-white/10"
-                  }`}
+                <Card
+                  className={`glass-card glass-card-hover rounded-3xl p-6 border transition-all duration-300 ${edu.current ? "border-indigo-500/50 shadow-xl shadow-indigo-500/10" : "border-white/10"
+                    }`}
                 >
                   <CardContent className="p-0">
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-3">

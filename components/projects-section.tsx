@@ -1,53 +1,58 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Github, ExternalLink, Sparkles, Cpu, Globe, BookOpen, Sun, Pill, Bike, Bot, Brain, FolderGit2, Star } from "lucide-react"
+import { Github, Sparkles, Cpu, Globe, BookOpen, Sun, Pill, Bike, Bot, Brain, FolderGit2, ArrowUpRight } from "lucide-react"
 
 export function ProjectsSection() {
   const [selectedCategory, setSelectedCategory] = useState("All")
 
   const projects = [
     {
-      title: "RunPod Full YouTube Automation",
-      subtitle: "Autonomous Cloud Video Generation Pipeline",
-      description: "A 15-stage automated video generation engine operating on remote RunPod cloud instances. Integrates LLM scripting, voice synthesis, scene building, upscaling, and FFmpeg multiplexing.",
+      title: "RunPod YouTube Automation",
+      subtitle: "Autonomous Cloud Video Generation Engine",
+      description: "A 15-stage automated video generation pipeline operating on remote RunPod cloud instances. Integrates LLM scripting, voice synthesis, scene building, upscaling, and FFmpeg multiplexing.",
       category: "Cloud & Automation",
       tech: ["Python", "RunPod GPU", "FFmpeg", "Voice AI", "LLMs"],
       github: "https://github.com/arshadmehmood1/youtube-automation-runpod",
+      image: "/images/projects/yt_automation.png",
       icon: Sparkles,
       featured: true
     },
     {
       title: "Driver Monitoring System (DMS)",
       subtitle: "Edge AI Native Android Application",
-      description: "Production-grade native Android app for road safety monitoring driver attentiveness using on-device TensorFlow Lite, background WorkManager sync, and Firebase Firestore.",
+      description: "Production-grade native Android application monitoring driver attentiveness using on-device TensorFlow Lite, background WorkManager sync, and Firebase telemetry.",
       category: "Mobile & Edge AI",
       tech: ["Android (Kotlin)", "TensorFlow Lite", "Firebase", "WorkManager"],
       github: "https://github.com/arshadmehmood1/driver-monitoring-system-android",
+      image: "/images/projects/dms_android.png",
       icon: Cpu,
       featured: true
     },
     {
       title: "SafeRoute Web",
       subtitle: "Interactive Safety Routing Platform",
-      description: "Modern web application for route planning and safety analysis built with a clean React architecture and Supabase Backend-as-a-Service for row-level security and authentication.",
+      description: "Modern web application for route planning and safety analysis built with a clean React architecture and Supabase Backend-as-a-Service for row-level security.",
       category: "Full-Stack Web",
       tech: ["React", "Vite", "Supabase", "Vanilla CSS"],
       github: "https://github.com/arshadmehmood1/saferoute-web",
+      image: "/images/projects/saferoute_web.png",
       icon: Globe,
-      featured: false
+      featured: true
     },
     {
       title: "StudySuite Platform",
       subtitle: "Scalable EdTech Architecture",
-      description: "Comprehensive EdTech platform built with clean client-server architecture separation, handling educational resource management and market intelligence workflows.",
+      description: "Comprehensive EdTech platform built with clean client-server architecture separation, handling educational resource management and student analytics.",
       category: "Full-Stack Web",
       tech: ["React", "Node.js", "REST API", "Express"],
       github: "https://github.com/arshadmehmood1/studysuite-platform",
+      image: "/images/projects/studysuite.png",
       icon: BookOpen,
-      featured: false
+      featured: true
     },
     {
       title: "Weather Outfit Predictor ML",
@@ -60,8 +65,8 @@ export function ProjectsSection() {
       featured: false
     },
     {
-      title: "AI Medication Side Effects Analysis",
-      subtitle: "Clinical Data Science & Web App",
+      title: "AI Medication Side Effects",
+      subtitle: "Clinical Data Science & Lookup Portal",
       description: "End-to-end clinical data science project featuring exploratory data analysis in Jupyter Notebooks, predictive model APIs, and an interactive side-effect lookup portal.",
       category: "Data Science & ML",
       tech: ["Python", "Pandas", "scikit-learn", "REST API"],
@@ -108,21 +113,21 @@ export function ProjectsSection() {
     : projects.filter(p => p.category === selectedCategory || (selectedCategory === "Cloud & Automation" && p.category === "AI & NLP"))
 
   return (
-    <section id="projects" className="py-24 relative overflow-hidden bg-dots-pattern">
+    <section id="projects" className="py-24 relative bg-background border-t border-border/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         <div className="max-w-6xl mx-auto">
           
           {/* Section Header */}
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border-indigo-500/30 mb-4">
-              <FolderGit2 className="w-4 h-4 text-indigo-400" />
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-400">Featured Showcase</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-secondary text-secondary-foreground text-xs font-semibold mb-3 border border-border">
+              <FolderGit2 className="w-3.5 h-3.5 text-primary" />
+              <span>Project Portfolio</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground tracking-tight mb-4">
-              Open-Source <span className="gradient-text">GitHub Projects</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight mb-3">
+              Featured Software & AI Projects
             </h2>
-            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-              A curated collection of autonomous AI pipelines, edge models, native apps, and full-stack web solutions.
+            <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+              Open-source applications, autonomous cloud pipelines, edge ML models, and full-stack solutions.
             </p>
           </div>
 
@@ -132,10 +137,10 @@ export function ProjectsSection() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-full text-xs font-semibold transition-all duration-300 ${
+                className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
                   selectedCategory === cat
-                    ? "bg-primary text-white shadow-lg shadow-indigo-500/25 scale-105"
-                    : "glass-card text-muted-foreground hover:text-foreground hover:bg-white/10"
+                    ? "bg-primary text-primary-foreground font-semibold shadow-sm"
+                    : "bg-secondary/60 text-muted-foreground hover:text-foreground hover:bg-secondary border border-border/50"
                 }`}
               >
                 {cat}
@@ -150,51 +155,60 @@ export function ProjectsSection() {
               return (
                 <Card 
                   key={project.title} 
-                  className={`flex flex-col justify-between glass-card glass-card-hover rounded-3xl p-6 transition-all duration-300 relative border ${
-                    project.featured 
-                      ? "border-indigo-500/50 shadow-xl shadow-indigo-500/10" 
-                      : "border-white/10"
-                  }`}
+                  className="flex flex-col justify-between classic-card classic-card-hover rounded-2xl overflow-hidden border border-border"
                 >
                   <div>
-                    {/* Header Row */}
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-                        {project.category}
-                      </span>
-
-                      <div className="flex items-center gap-2">
-                        {project.featured && (
-                          <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-amber-500/15 text-amber-300 border border-amber-500/30">
-                            <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
-                            Flagship
+                    {/* Project Image Banner */}
+                    {project.image ? (
+                      <div className="relative w-full h-48 bg-secondary overflow-hidden border-b border-border">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          className="object-cover object-top transition-transform duration-500 hover:scale-105"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          priority={project.featured}
+                        />
+                        <div className="absolute top-3 left-3 z-10">
+                          <span className="px-2.5 py-1 rounded-md text-[11px] font-bold bg-background/90 text-foreground border border-border shadow-sm backdrop-blur-sm">
+                            {project.category}
                           </span>
-                        )}
-                        <div className="p-2 rounded-xl bg-slate-950/70 border border-white/10 text-cyan-400">
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="p-6 pb-0 flex items-center justify-between">
+                        <span className="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-secondary text-secondary-foreground border border-border">
+                          {project.category}
+                        </span>
+                        <div className="p-2 rounded-lg bg-secondary text-foreground">
                           <Icon className="h-4 w-4" />
                         </div>
                       </div>
-                    </div>
+                    )}
 
-                    <CardTitle className="text-xl font-bold text-foreground leading-tight mb-1">
-                      {project.title}
-                    </CardTitle>
-                    <CardDescription className="text-xs font-semibold text-cyan-400/90 mb-4">
-                      {project.subtitle}
-                    </CardDescription>
+                    <CardHeader className="p-6 pb-2">
+                      <CardTitle className="text-lg font-bold text-foreground leading-snug flex items-center justify-between">
+                        <span>{project.title}</span>
+                      </CardTitle>
+                      <CardDescription className="text-xs font-medium text-primary mt-0.5">
+                        {project.subtitle}
+                      </CardDescription>
+                    </CardHeader>
 
-                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-6">
-                      {project.description}
-                    </p>
+                    <CardContent className="px-6 pb-4">
+                      <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                        {project.description}
+                      </p>
+                    </CardContent>
                   </div>
 
-                  <div>
+                  <div className="px-6 pb-6">
                     {/* Tech Chips */}
-                    <div className="flex flex-wrap gap-1.5 mb-6">
+                    <div className="flex flex-wrap gap-1.5 mb-5">
                       {project.tech.map((t) => (
                         <span 
                           key={t} 
-                          className="px-2.5 py-1 bg-slate-950/80 text-foreground/80 rounded-lg text-[11px] font-medium border border-white/5"
+                          className="px-2.5 py-0.5 bg-secondary text-secondary-foreground rounded-md text-[11px] font-medium border border-border/60"
                         >
                           {t}
                         </span>
@@ -204,12 +218,13 @@ export function ProjectsSection() {
                     {/* Action Button */}
                     <Button
                       onClick={() => window.open(project.github, "_blank")}
-                      variant="default"
+                      variant="outline"
                       size="sm"
-                      className="w-full font-bold rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white shadow-md shadow-indigo-500/20 transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2"
+                      className="w-full font-semibold rounded-xl border-border bg-background hover:bg-secondary text-foreground transition-all duration-200 flex items-center justify-center gap-2"
                     >
                       <Github className="h-4 w-4" />
-                      View Repository
+                      View Code on GitHub
+                      <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground" />
                     </Button>
                   </div>
                 </Card>

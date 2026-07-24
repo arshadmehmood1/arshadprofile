@@ -33,7 +33,7 @@ export function HeroSection() {
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-12">
         <div className="max-w-5xl mx-auto">
-          
+
           {/* Status Badge */}
           <div className="flex justify-center mb-8 animate-fade-in-up">
             <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-card border-emerald-500/30 shadow-lg shadow-emerald-500/10">
@@ -50,7 +50,7 @@ export function HeroSection() {
           <div className="flex flex-col items-center">
             {/* Profile Avatar & Hero Headline */}
             <div className="flex flex-col md:flex-row items-center gap-10 md:gap-14 mb-10 text-center md:text-left">
-              
+
               {/* Profile Avatar with Dual Animated Ring */}
               <div className="relative animate-fade-in-up">
                 <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full p-1.5 bg-gradient-to-tr from-indigo-500 via-cyan-400 to-emerald-400 shadow-2xl shadow-indigo-500/30 animate-float">
@@ -98,7 +98,7 @@ export function HeroSection() {
               ].map((item) => {
                 const Icon = item.icon
                 return (
-                  <div 
+                  <div
                     key={item.label}
                     className="flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border-white/10 hover:border-indigo-500/50 hover:bg-white/10 transition-all duration-300 shadow-sm"
                   >
