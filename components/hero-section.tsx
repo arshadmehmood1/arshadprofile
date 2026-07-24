@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Github, Linkedin, Download, ChevronDown, Sparkles, Terminal, ShieldCheck } from "lucide-react"
+import { Github, Linkedin, Download, ChevronDown, Sparkles, Terminal, ShieldCheck, Cpu } from "lucide-react"
 import Image from "next/image"
 import { Typewriter } from "./typewriter"
 
