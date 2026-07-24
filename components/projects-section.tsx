@@ -2,59 +2,173 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Github, ExternalLink } from "lucide-react"
+import { Github, ExternalLink, Sparkles, Cpu, Globe, BookOpen, Sun, Pill, Bike, Bot, Brain } from "lucide-react"
 
 export function ProjectsSection() {
+  const projects = [
+    {
+      title: "RunPod Full YouTube Automation",
+      subtitle: "Autonomous Cloud Video Generation Pipeline",
+      description: "A 15-stage automated video generation engine operating on remote RunPod cloud instances. Integrates LLM scripting, voice synthesis, scene building, upscaling, and FFmpeg multiplexing.",
+      category: "Cloud & Automation",
+      tech: ["Python", "RunPod Cloud GPU", "FFmpeg", "Voice AI", "LLMs"],
+      github: "https://github.com/arshadmehmood1/youtube-automation-runpod",
+      icon: Sparkles,
+      featured: true
+    },
+    {
+      title: "Driver Monitoring System (DMS)",
+      subtitle: "Edge AI Native Android Application",
+      description: "Production-grade native Android app for road safety monitoring driver attentiveness using on-device TensorFlow Lite, background WorkManager sync, and Firebase Firestore.",
+      category: "Mobile & Edge AI",
+      tech: ["Android (Kotlin)", "TensorFlow Lite", "Firebase", "WorkManager"],
+      github: "https://github.com/arshadmehmood1/driver-monitoring-system-android",
+      icon: Cpu,
+      featured: true
+    },
+    {
+      title: "SafeRoute Web",
+      subtitle: "Interactive Safety Routing Platform",
+      description: "Modern web application for route planning and safety analysis built with a clean React architecture and Supabase Backend-as-a-Service for row-level security and authentication.",
+      category: "Full-Stack Web",
+      tech: ["React", "Vite", "Supabase", "Vanilla CSS"],
+      github: "https://github.com/arshadmehmood1/saferoute-web",
+      icon: Globe,
+      featured: false
+    },
+    {
+      title: "StudySuite Platform",
+      subtitle: "Scalable EdTech Architecture",
+      description: "Comprehensive EdTech platform built with clean client-server architecture separation, handling educational resource management and market intelligence workflows.",
+      category: "Full-Stack Web",
+      tech: ["Full Stack", "React", "Node.js", "REST API"],
+      github: "https://github.com/arshadmehmood1/studysuite-platform",
+      icon: BookOpen,
+      featured: false
+    },
+    {
+      title: "Weather Outfit Predictor ML",
+      subtitle: "Real-time Machine Learning API & Web Service",
+      description: "Predictive ML app connecting live meteorological APIs with trained scikit-learn models to deliver personalized real-time clothing recommendations.",
+      category: "Data Science & ML",
+      tech: ["Python", "scikit-learn", "Weather API", "Web UI"],
+      github: "https://github.com/arshadmehmood1/weather-outfit-predictor-ml",
+      icon: Sun,
+      featured: false
+    },
+    {
+      title: "AI Medication Side Effects Analysis",
+      subtitle: "Clinical Data Science & Web App",
+      description: "End-to-end clinical data science project featuring exploratory data analysis in Jupyter Notebooks, predictive model APIs, and an interactive side-effect lookup portal.",
+      category: "Data Science & ML",
+      tech: ["Python", "Pandas", "scikit-learn", "Jupyter", "REST API"],
+      github: "https://github.com/arshadmehmood1/ai-medication-side-effects-analysis",
+      icon: Pill,
+      featured: false
+    },
+    {
+      title: "Bike POS (Point of Sale)",
+      subtitle: "Cross-Platform Desktop Application",
+      description: "Desktop POS system designed for bike spare parts inventory management. Features local SQLite database integration, secure IPC bridge, and PDF receipt printing.",
+      category: "Desktop Software",
+      tech: ["Electron", "React", "Vite", "SQLite"],
+      github: "https://github.com/arshadmehmood1/bike-shop-pos-electron",
+      icon: Bike,
+      featured: false
+    },
+    {
+      title: "AI Complaint & Feedback Bot",
+      subtitle: "NLP Customer Intelligence Bot",
+      description: "AI-driven customer feedback analyzer that classifies complaint urgency, parses intent, and automates support triage routing.",
+      category: "AI & NLP",
+      tech: ["Python", "AI / NLP", "Django", "React"],
+      github: "https://github.com/arshadmehmood1/ai_analyst_bot",
+      icon: Bot,
+      featured: false
+    },
+    {
+      title: "Decision Memory Platform",
+      subtitle: "Contextual Decision Management",
+      description: "Full-stack decision tracking tool designed to log, categorize, and analyze technical and strategic decisions with historical context retrieval.",
+      category: "Full-Stack Web",
+      tech: ["React", "Node.js", "Express", "PostgreSQL"],
+      github: "https://github.com/arshadmehmood1/Decision-Memory",
+      icon: Brain,
+      featured: false
+    }
+  ]
+
   return (
     <section id="projects" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center text-foreground mb-12">Featured Project</h2>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">Featured GitHub Projects</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              A collection of open-source applications, AI pipelines, edge models, and full-stack web solutions.
+            </p>
+          </div>
 
-          <Card className="transition-transform duration-200 hover:scale-105 shadow-lg">
-            <CardHeader>
-              <CardTitle className="text-2xl text-primary">CompetitionCentral</CardTitle>
-              <CardDescription className="text-lg">Full-Stack Competition Hosting Platform</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-6 leading-relaxed">
-                Full-stack competition hosting platform with secure user authentication, PDF uploads, voting system,
-                leaderboard, admin dashboard, and ad monetization. Built with modern web technologies focusing on
-                security, scalability, and user experience.
-              </p>
-
-              <div className="mb-4">
-                <h4 className="font-semibold text-foreground mb-2">Technologies Used:</h4>
-                <div className="flex flex-wrap gap-2">
-                  {["ReactJS", "Node.js", "MongoDB", "JWT Auth", "File Upload", "Admin Dashboard"].map((tech) => (
-                    <span key={tech} className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  onClick={() => window.open("https://github.com/arshadmehmood/competitioncentral", "_blank")}
-                  className="transition-transform duration-200 hover:scale-105"
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((project) => {
+              const Icon = project.icon
+              return (
+                <Card 
+                  key={project.title} 
+                  className={`flex flex-col justify-between transition-all duration-300 hover:scale-[1.02] hover:shadow-xl border-border ${
+                    project.featured ? "border-primary/50 shadow-md bg-card/80" : ""
+                  }`}
                 >
-                  <Github className="mr-2 h-4 w-4" />
-                  View on GitHub
-                </Button>
-                <Button
-                  variant="outline"
-                  onClick={() => window.open("#", "_blank")}
-                  className="transition-transform duration-200 hover:scale-105"
-                >
-                  <ExternalLink className="mr-2 h-4 w-4" />
-                  Live Demo
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+                  <CardHeader>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-primary/10 text-primary">
+                        {project.category}
+                      </span>
+                      <Icon className="h-5 w-5 text-primary" />
+                    </div>
+                    <CardTitle className="text-xl font-bold text-foreground leading-tight">
+                      {project.title}
+                    </CardTitle>
+                    <CardDescription className="text-sm font-medium text-muted-foreground mt-1">
+                      {project.subtitle}
+                    </CardDescription>
+                  </CardHeader>
+
+                  <CardContent className="flex-1 flex flex-col justify-between">
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                      {project.description}
+                    </p>
+
+                    <div>
+                      <div className="flex flex-wrap gap-1.5 mb-6">
+                        {project.tech.map((t) => (
+                          <span 
+                            key={t} 
+                            className="px-2 py-0.5 bg-muted text-muted-foreground rounded text-xs font-medium"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+
+                      <Button
+                        onClick={() => window.open(project.github, "_blank")}
+                        variant="default"
+                        size="sm"
+                        className="w-full transition-transform duration-200 hover:scale-[1.02]"
+                      >
+                        <Github className="mr-2 h-4 w-4" />
+                        View Repository
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              )
+            })}
+          </div>
         </div>
       </div>
     </section>
   )
 }
+

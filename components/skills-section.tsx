@@ -4,29 +4,23 @@ import { Badge } from "@/components/ui/badge"
 export function SkillsSection() {
   const skillCategories = [
     {
-      title: "Frontend",
-      skills: ["ReactJS", "Vite", "HTML", "CSS", "Tailwind CSS", "JavaScript (ES6+)"],
-      icon: "🎨",
-    },
-    {
-      title: "Backend",
-      skills: ["Node.js", "Express.js", "MongoDB", "PostgreSQL"],
-      icon: "⚙️",
-    },
-    {
-      title: "AI Development",
-      skills: ["OpenAI API", "LangChain", "Chatbot Architecture", "NLP"],
+      title: "AI & Machine Learning",
+      skills: ["TensorFlow Lite", "PyTorch", "Edge AI", "OpenCV", "scikit-learn", "NLP & LLMs", "RunPod Automation"],
       icon: "🤖",
     },
     {
-      title: "Other Skills",
-      skills: [
-        "REST APIs",
-        "Authentication (JWT)",
-        "Payment Integration",
-        "File Handling",
-        "Deployment (Vercel, Render)",
-      ],
+      title: "Frontend & Mobile",
+      skills: ["ReactJS", "Vite", "Android (Kotlin)", "Electron Desktop", "Tailwind CSS", "Next.js", "JavaScript (ES6+)"],
+      icon: "🎨",
+    },
+    {
+      title: "Backend & Cloud",
+      skills: ["Node.js", "Express.js", "Python (Django/FastAPI)", "Supabase", "SQLite", "PostgreSQL", "MongoDB"],
+      icon: "⚙️",
+    },
+    {
+      title: "Architecture & DevOps",
+      skills: ["FFmpeg Video Pipelines", "WorkManager Sync", "REST APIs", "Git / GitHub CLI", "Docker", "Vercel"],
       icon: "🛠️",
     },
   ]
@@ -38,7 +32,7 @@ export function SkillsSection() {
           <h2 className="text-3xl sm:text-4xl font-bold text-center text-foreground mb-12">Skills & Technologies</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {skillCategories.map((category, index) => (
+            {skillCategories.map((category) => (
               <Card key={category.title} className="transition-transform duration-200 hover:scale-105">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-3 text-xl">
@@ -52,7 +46,7 @@ export function SkillsSection() {
                       <Badge
                         key={skill}
                         variant="secondary"
-                        className="transition-colors duration-200 hover:bg-primary hover:text-primary-foreground"
+                        className="transition-colors duration-200 hover:bg-primary hover:text-primary-foreground font-medium text-sm py-1 px-3"
                       >
                         {skill}
                       </Badge>
@@ -67,3 +61,4 @@ export function SkillsSection() {
     </section>
   )
 }
+
