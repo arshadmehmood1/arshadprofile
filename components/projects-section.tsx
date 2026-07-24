@@ -1,17 +1,20 @@
 "use client"
 
+import { useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Github, ExternalLink, Sparkles, Cpu, Globe, BookOpen, Sun, Pill, Bike, Bot, Brain } from "lucide-react"
+import { Github, ExternalLink, Sparkles, Cpu, Globe, BookOpen, Sun, Pill, Bike, Bot, Brain, FolderGit2, Star } from "lucide-react"
 
 export function ProjectsSection() {
+  const [selectedCategory, setSelectedCategory] = useState("All")
+
   const projects = [
     {
       title: "RunPod Full YouTube Automation",
       subtitle: "Autonomous Cloud Video Generation Pipeline",
       description: "A 15-stage automated video generation engine operating on remote RunPod cloud instances. Integrates LLM scripting, voice synthesis, scene building, upscaling, and FFmpeg multiplexing.",
       category: "Cloud & Automation",
-      tech: ["Python", "RunPod Cloud GPU", "FFmpeg", "Voice AI", "LLMs"],
+      tech: ["Python", "RunPod GPU", "FFmpeg", "Voice AI", "LLMs"],
       github: "https://github.com/arshadmehmood1/youtube-automation-runpod",
       icon: Sparkles,
       featured: true
@@ -41,7 +44,7 @@ export function ProjectsSection() {
       subtitle: "Scalable EdTech Architecture",
       description: "Comprehensive EdTech platform built with clean client-server architecture separation, handling educational resource management and market intelligence workflows.",
       category: "Full-Stack Web",
-      tech: ["Full Stack", "React", "Node.js", "REST API"],
+      tech: ["React", "Node.js", "REST API", "Express"],
       github: "https://github.com/arshadmehmood1/studysuite-platform",
       icon: BookOpen,
       featured: false
@@ -61,7 +64,7 @@ export function ProjectsSection() {
       subtitle: "Clinical Data Science & Web App",
       description: "End-to-end clinical data science project featuring exploratory data analysis in Jupyter Notebooks, predictive model APIs, and an interactive side-effect lookup portal.",
       category: "Data Science & ML",
-      tech: ["Python", "Pandas", "scikit-learn", "Jupyter", "REST API"],
+      tech: ["Python", "Pandas", "scikit-learn", "REST API"],
       github: "https://github.com/arshadmehmood1/ai-medication-side-effects-analysis",
       icon: Pill,
       featured: false
@@ -98,72 +101,117 @@ export function ProjectsSection() {
     }
   ]
 
+  const categories = ["All", "Cloud & Automation", "Mobile & Edge AI", "Full-Stack Web", "Desktop Software", "Data Science & ML"]
+
+  const filteredProjects = selectedCategory === "All" 
+    ? projects 
+    : projects.filter(p => p.category === selectedCategory || (selectedCategory === "Cloud & Automation" && p.category === "AI & NLP"))
+
   return (
-    <section id="projects" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-24 relative overflow-hidden bg-dots-pattern">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">Featured GitHub Projects</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              A collection of open-source applications, AI pipelines, edge models, and full-stack web solutions.
+          
+          {/* Section Header */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border-indigo-500/30 mb-4">
+              <FolderGit2 className="w-4 h-4 text-indigo-400" />
+              <span className="text-xs font-bold uppercase tracking-wider text-indigo-400">Featured Showcase</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground tracking-tight mb-4">
+              Open-Source <span className="gradient-text">GitHub Projects</span>
+            </h2>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+              A curated collection of autonomous AI pipelines, edge models, native apps, and full-stack web solutions.
             </p>
           </div>
 
+          {/* Category Filter Bar */}
+          <div className="flex flex-wrap justify-center gap-2 mb-12">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`px-4 py-2 rounded-full text-xs font-semibold transition-all duration-300 ${
+                  selectedCategory === cat
+                    ? "bg-primary text-white shadow-lg shadow-indigo-500/25 scale-105"
+                    : "glass-card text-muted-foreground hover:text-foreground hover:bg-white/10"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project) => {
+            {filteredProjects.map((project) => {
               const Icon = project.icon
               return (
                 <Card 
                   key={project.title} 
-                  className={`flex flex-col justify-between glass-card glass-card-hover rounded-2xl p-2 transition-all duration-300 ${
-                    project.featured ? "border-primary/50 shadow-lg shadow-indigo-500/10" : ""
+                  className={`flex flex-col justify-between glass-card glass-card-hover rounded-3xl p-6 transition-all duration-300 relative border ${
+                    project.featured 
+                      ? "border-indigo-500/50 shadow-xl shadow-indigo-500/10" 
+                      : "border-white/10"
                   }`}
                 >
-                  <CardHeader>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">
+                  <div>
+                    {/* Header Row */}
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
                         {project.category}
                       </span>
-                      <div className="p-2 rounded-xl bg-primary/10 text-primary">
-                        <Icon className="h-5 w-5" />
+
+                      <div className="flex items-center gap-2">
+                        {project.featured && (
+                          <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-amber-500/15 text-amber-300 border border-amber-500/30">
+                            <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
+                            Flagship
+                          </span>
+                        )}
+                        <div className="p-2 rounded-xl bg-slate-950/70 border border-white/10 text-cyan-400">
+                          <Icon className="h-4 w-4" />
+                        </div>
                       </div>
                     </div>
-                    <CardTitle className="text-xl font-bold text-foreground leading-tight">
+
+                    <CardTitle className="text-xl font-bold text-foreground leading-tight mb-1">
                       {project.title}
                     </CardTitle>
-                    <CardDescription className="text-sm font-medium text-muted-foreground mt-1">
+                    <CardDescription className="text-xs font-semibold text-cyan-400/90 mb-4">
                       {project.subtitle}
                     </CardDescription>
-                  </CardHeader>
 
-                  <CardContent className="flex-1 flex flex-col justify-between">
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-6">
                       {project.description}
                     </p>
+                  </div>
 
-                    <div>
-                      <div className="flex flex-wrap gap-1.5 mb-6">
-                        {project.tech.map((t) => (
-                          <span 
-                            key={t} 
-                            className="px-2.5 py-0.5 bg-secondary/80 text-foreground/90 rounded-md text-xs font-medium border border-border/40"
-                          >
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-
-                      <Button
-                        onClick={() => window.open(project.github, "_blank")}
-                        variant="default"
-                        size="sm"
-                        className="w-full font-semibold rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground shadow-md transition-all duration-300 hover:scale-[1.02]"
-                      >
-                        <Github className="mr-2 h-4 w-4" />
-                        View Repository
-                      </Button>
+                  <div>
+                    {/* Tech Chips */}
+                    <div className="flex flex-wrap gap-1.5 mb-6">
+                      {project.tech.map((t) => (
+                        <span 
+                          key={t} 
+                          className="px-2.5 py-1 bg-slate-950/80 text-foreground/80 rounded-lg text-[11px] font-medium border border-white/5"
+                        >
+                          {t}
+                        </span>
+                      ))}
                     </div>
-                  </CardContent>
+
+                    {/* Action Button */}
+                    <Button
+                      onClick={() => window.open(project.github, "_blank")}
+                      variant="default"
+                      size="sm"
+                      className="w-full font-bold rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 hover:from-indigo-500 hover:to-cyan-500 text-white shadow-md shadow-indigo-500/20 transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2"
+                    >
+                      <Github className="h-4 w-4" />
+                      View Repository
+                    </Button>
+                  </div>
                 </Card>
               )
             })}
@@ -174,4 +222,3 @@ export function ProjectsSection() {
     </section>
   )
 }
-

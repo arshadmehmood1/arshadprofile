@@ -1,55 +1,80 @@
 "use client"
 
-import { Github, Linkedin, Mail } from "lucide-react"
+import { Github, Linkedin, Mail, ArrowUp, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }
+
+  const currentYear = new Date().getFullYear()
+
   return (
-    <footer className="bg-card border-t border-border py-12">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="mb-8">
-            <h3 className="text-2xl font-bold text-foreground mb-4">Arshad Mehmood</h3>
-            <p className="text-muted-foreground">AI Language & Chatbot Developer | ReactJS Full Stack Developer</p>
-          </div>
-
-          <div className="flex justify-center space-x-4 mb-8">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => window.open("https://github.com/arshadmehmood", "_blank")}
-              className="transition-transform duration-200 hover:scale-110"
-            >
-              <Github className="h-5 w-5" />
-              <span className="sr-only">GitHub</span>
-            </Button>
+    <footer className="relative border-t border-white/10 bg-slate-950/80 backdrop-blur-xl py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+        <div className="max-w-5xl mx-auto flex flex-col items-center gap-8">
+          
+          {/* Top Row: Logo & Back to top button */}
+          <div className="w-full flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-600 via-blue-500 to-cyan-400 p-0.5 flex items-center justify-center">
+                <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+                  <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+                </div>
+              </div>
+              <span className="font-extrabold text-base text-foreground tracking-tight">
+                Arshad<span className="gradient-text">.dev</span>
+              </span>
+            </div>
 
             <Button
-              variant="ghost"
+              onClick={scrollToTop}
               size="icon"
-              onClick={() => window.open("https://linkedin.com/in/arshadmehmood", "_blank")}
-              className="transition-transform duration-200 hover:scale-110"
+              variant="outline"
+              className="rounded-full glass-card border-white/10 hover:bg-white/10 text-muted-foreground hover:text-foreground transition-transform hover:scale-110"
+              aria-label="Back to Top"
             >
-              <Linkedin className="h-5 w-5" />
-              <span className="sr-only">LinkedIn</span>
-            </Button>
-
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => window.open("mailto:arshadmehm3273@gmail.com")}
-              className="transition-transform duration-200 hover:scale-110"
-            >
-              <Mail className="h-5 w-5" />
-              <span className="sr-only">Email</span>
+              <ArrowUp className="w-4 h-4" />
             </Button>
           </div>
 
-          <div className="border-t border-border pt-8">
-            <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Arshad Mehmood. All rights reserved.
+          {/* Social Links */}
+          <div className="flex items-center gap-4">
+            <a
+              href="https://github.com/arshadmehmood1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-2xl glass-card border-white/10 hover:border-indigo-500/50 hover:bg-white/10 text-muted-foreground hover:text-foreground transition-all duration-300 hover:scale-110"
+              aria-label="GitHub Profile"
+            >
+              <Github className="w-5 h-5" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/arshad-mehmood-a0075b375"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-2xl glass-card border-white/10 hover:border-indigo-500/50 hover:bg-white/10 text-muted-foreground hover:text-foreground transition-all duration-300 hover:scale-110"
+              aria-label="LinkedIn Profile"
+            >
+              <Linkedin className="w-5 h-5" />
+            </a>
+            <a
+              href="mailto:arshadmehm3273@gmail.com"
+              className="p-3 rounded-2xl glass-card border-white/10 hover:border-indigo-500/50 hover:bg-white/10 text-muted-foreground hover:text-foreground transition-all duration-300 hover:scale-110"
+              aria-label="Send Email"
+            >
+              <Mail className="w-5 h-5" />
+            </a>
+          </div>
+
+          {/* Copyright & Tagline */}
+          <div className="text-center">
+            <p className="text-xs sm:text-sm text-muted-foreground">
+              © {currentYear} <span className="font-semibold text-foreground">Arshad Mehmood</span>. Built with Next.js 16, React 19 & Tailwind CSS.
             </p>
           </div>
+
         </div>
       </div>
     </footer>
