@@ -145,7 +145,7 @@ export function ProjectsSection() {
                 className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
                   selectedCategory === cat
                     ? "bg-primary text-primary-foreground font-semibold shadow-sm"
-                    : "bg-secondary/60 text-muted-foreground hover:text-foreground hover:bg-secondary border border-border/50"
+                    : "bg-slate-100 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300 hover:text-foreground hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200/80 dark:border-slate-700/50"
                 }`}
               >
                 {cat}
@@ -213,7 +213,7 @@ export function ProjectsSection() {
                       {project.tech.map((t) => (
                         <span 
                           key={t} 
-                          className="px-2.5 py-0.5 bg-secondary text-secondary-foreground rounded-md text-[11px] font-medium border border-border/60"
+                          className="px-2.5 py-0.5 bg-slate-100 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 rounded-md text-[11px] font-semibold border border-slate-200/80 dark:border-slate-700/60"
                         >
                           {t}
                         </span>
