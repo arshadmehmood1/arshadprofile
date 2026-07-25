@@ -61,6 +61,7 @@ export function ProjectsSection() {
       category: "Data Science & ML",
       tech: ["Python", "scikit-learn", "Weather API", "Web UI"],
       github: "https://github.com/arshadmehmood1/weather-outfit-predictor-ml",
+      image: "/images/projects/weather_outfit.png",
       icon: Sun,
       featured: false
     },
@@ -71,6 +72,7 @@ export function ProjectsSection() {
       category: "Data Science & ML",
       tech: ["Python", "Pandas", "scikit-learn", "REST API"],
       github: "https://github.com/arshadmehmood1/ai-medication-side-effects-analysis",
+      image: "/images/projects/medication_side_effects.png",
       icon: Pill,
       featured: false
     },
@@ -81,6 +83,7 @@ export function ProjectsSection() {
       category: "Desktop Software",
       tech: ["Electron", "React", "Vite", "SQLite"],
       github: "https://github.com/arshadmehmood1/bike-shop-pos-electron",
+      image: "/images/projects/bike_pos.png",
       icon: Bike,
       featured: false
     },
@@ -91,6 +94,7 @@ export function ProjectsSection() {
       category: "AI & NLP",
       tech: ["Python", "AI / NLP", "Django", "React"],
       github: "https://github.com/arshadmehmood1/ai_analyst_bot",
+      image: "/images/projects/ai_complaint_bot.png",
       icon: Bot,
       featured: false
     },
@@ -101,6 +105,7 @@ export function ProjectsSection() {
       category: "Full-Stack Web",
       tech: ["React", "Node.js", "Express", "PostgreSQL"],
       github: "https://github.com/arshadmehmood1/Decision-Memory",
+      image: "/images/projects/decision_memory.png",
       icon: Brain,
       featured: false
     }
