@@ -20,7 +20,7 @@ export function Header() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40)
 
-      const sections = ["home", "about", "skills", "projects", "education", "contact"]
+      const sections = ["home", "about", "skills", "projects", "journal", "education", "contact"]
       const scrollPosition = window.scrollY + 200
 
       for (const section of sections) {
@@ -45,6 +45,7 @@ export function Header() {
     { href: "#about", label: "About", id: "about" },
     { href: "#skills", label: "Skills", id: "skills" },
     { href: "#projects", label: "Projects", id: "projects" },
+    { href: "#journal", label: "Journal", id: "journal" },
     { href: "#education", label: "Education", id: "education" },
     { href: "#contact", label: "Contact", id: "contact" },
   ]
