@@ -25,7 +25,7 @@ export function Header() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40)
 
-      const sections = ["home", "about", "skills", "projects", "education", "contact"]
+      const sections = ["home", "about", "skills", "projects", "journal", "education", "contact"]
       const scrollPosition = window.scrollY + 200
 
       for (const section of sections) {
@@ -50,15 +50,23 @@ export function Header() {
     { href: "/#about", label: "About", id: "about" },
     { href: "/#skills", label: "Skills", id: "skills" },
     { href: "/#projects", label: "Projects", id: "projects" },
-    { href: "/journal", label: "Journal", id: "journal", isPage: true },
+    { href: "/journal", label: "Journal", id: "journal" },
     { href: "/#education", label: "Education", id: "education" },
     { href: "/#contact", label: "Contact", id: "contact" },
   ]
 
-  const handleNavClick = (href: string, isPage?: boolean) => {
+  const handleNavClick = (href: string, id: string) => {
     setIsMobileMenuOpen(false)
-    if (isPage) {
-      window.location.href = href
+
+    if (id === "journal") {
+      if (pathname === "/") {
+        const element = document.querySelector("#journal")
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" })
+          return
+        }
+      }
+      window.location.href = "/journal"
       return
     }
 
@@ -105,14 +113,14 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1 bg-secondary/60 p-1.5 rounded-full border border-border/40">
             {navItems.map((item) => {
-              const isActive = item.isPage 
-                ? pathname.startsWith("/journal") 
-                : pathname === "/" && activeSection === item.id
+              const isActive = item.id === "journal"
+                ? (pathname === "/" && activeSection === "journal") || pathname.startsWith("/journal")
+                : (pathname === "/" && activeSection === item.id)
 
               return (
                 <button
                   key={item.href}
-                  onClick={() => handleNavClick(item.href, item.isPage)}
+                  onClick={() => handleNavClick(item.href, item.id)}
                   className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 relative ${
                     isActive
                       ? "text-primary-foreground bg-primary shadow-md shadow-indigo-500/25 font-semibold"
@@ -198,14 +206,14 @@ export function Header() {
           <div className="md:hidden mt-3 p-4 glass-panel rounded-2xl border border-border shadow-2xl animate-fade-in-up">
             <nav className="flex flex-col space-y-2">
               {navItems.map((item) => {
-                const isActive = item.isPage 
-                  ? pathname.startsWith("/journal") 
-                  : pathname === "/" && activeSection === item.id
+                const isActive = item.id === "journal"
+                  ? (pathname === "/" && activeSection === "journal") || pathname.startsWith("/journal")
+                  : (pathname === "/" && activeSection === item.id)
 
                 return (
                   <button
                     key={item.href}
-                    onClick={() => handleNavClick(item.href, item.isPage)}
+                    onClick={() => handleNavClick(item.href, item.id)}
                     className={`w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-colors ${
                       isActive
                         ? "bg-primary text-primary-foreground font-semibold"
