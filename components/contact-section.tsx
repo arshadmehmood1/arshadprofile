@@ -59,9 +59,9 @@ export function ContactSection() {
           
           {/* Section Header */}
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border-indigo-500/30 mb-4">
-              <MessageSquare className="w-4 h-4 text-indigo-400" />
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-400">Get In Touch</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border-indigo-500/30 bg-indigo-500/10 mb-4">
+              <MessageSquare className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+              <span className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">Get In Touch</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground tracking-tight mb-4">
               Let's Build Something <span className="gradient-text">Great Together</span>
@@ -74,10 +74,10 @@ export function ContactSection() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             
             {/* Form Card */}
-            <Card className="glass-card glass-card-hover rounded-3xl p-6 border border-white/10 shadow-2xl">
+            <Card className="glass-card glass-card-hover rounded-3xl p-6 border border-border shadow-lg">
               <CardHeader className="p-0 mb-6">
                 <CardTitle className="flex items-center gap-3 text-xl font-bold text-foreground">
-                  <div className="p-2.5 rounded-xl bg-slate-950/70 border border-white/10 text-indigo-400">
+                  <div className="p-2.5 rounded-xl bg-secondary border border-border text-indigo-600 dark:text-indigo-400">
                     <Mail className="h-5 w-5" />
                   </div>
                   Send a Direct Message
@@ -92,7 +92,7 @@ export function ContactSection() {
                       value={formData.name} 
                       onChange={handleChange} 
                       required 
-                      className="glass-card rounded-xl border-white/10 focus:border-indigo-500 focus:ring-indigo-500/20 py-3 text-foreground placeholder:text-muted-foreground"
+                      className="glass-card rounded-xl border-border focus:border-primary focus:ring-primary/20 py-3 text-foreground placeholder:text-muted-foreground"
                     />
                   </div>
                   <div>
@@ -103,7 +103,7 @@ export function ContactSection() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="glass-card rounded-xl border-white/10 focus:border-indigo-500 focus:ring-indigo-500/20 py-3 text-foreground placeholder:text-muted-foreground"
+                      className="glass-card rounded-xl border-border focus:border-primary focus:ring-primary/20 py-3 text-foreground placeholder:text-muted-foreground"
                     />
                   </div>
                   <div>
@@ -114,12 +114,12 @@ export function ContactSection() {
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      className="glass-card rounded-xl border-white/10 focus:border-indigo-500 focus:ring-indigo-500/20 text-foreground placeholder:text-muted-foreground resize-none"
+                      className="glass-card rounded-xl border-border focus:border-primary focus:ring-primary/20 text-foreground placeholder:text-muted-foreground resize-none"
                     />
                   </div>
                   <Button 
                     type="submit" 
-                    className="w-full font-bold rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white shadow-xl shadow-indigo-500/20 py-6 transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2"
+                    className="w-full font-bold rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-600 dark:from-indigo-600 dark:to-cyan-500 hover:opacity-95 text-white shadow-xl shadow-indigo-500/20 py-6 transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2"
                   >
                     <Send className="h-4 w-4" />
                     Send Message
@@ -129,7 +129,7 @@ export function ContactSection() {
             </Card>
 
             {/* Quick Contact & Info Card */}
-            <Card className="glass-card glass-card-hover rounded-3xl p-6 border border-white/10 shadow-2xl flex flex-col justify-between">
+            <Card className="glass-card glass-card-hover rounded-3xl p-6 border border-border shadow-lg flex flex-col justify-between">
               <div>
                 <CardHeader className="p-0 mb-6">
                   <CardTitle className="text-xl font-bold text-foreground">Contact Details & Channels</CardTitle>
@@ -142,9 +142,9 @@ export function ContactSection() {
                 <div className="space-y-4 mb-6">
                   
                   {/* Email Button */}
-                  <div className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-950/60 border border-white/10">
+                  <div className="flex items-center justify-between p-3.5 rounded-2xl bg-secondary border border-border">
                     <div className="flex items-center gap-3 overflow-hidden">
-                      <div className="p-2 rounded-xl bg-indigo-500/10 text-indigo-400">
+                      <div className="p-2 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
                         <Mail className="h-4 w-4" />
                       </div>
                       <div className="truncate">
@@ -156,16 +156,16 @@ export function ContactSection() {
                       size="sm"
                       variant="ghost"
                       onClick={() => copyToClipboard("arshadmehm3273@gmail.com", "email")}
-                      className="rounded-xl hover:bg-white/10 text-muted-foreground hover:text-foreground"
+                      className="rounded-xl hover:bg-background text-muted-foreground hover:text-foreground"
                     >
-                      {copiedEmail ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                      {copiedEmail ? <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-4 h-4" />}
                     </Button>
                   </div>
 
                   {/* Phone Button */}
-                  <div className="flex items-center justify-between p-3.5 rounded-2xl bg-slate-950/60 border border-white/10">
+                  <div className="flex items-center justify-between p-3.5 rounded-2xl bg-secondary border border-border">
                     <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-xl bg-cyan-500/10 text-cyan-400">
+                      <div className="p-2 rounded-xl bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
                         <Phone className="h-4 w-4" />
                       </div>
                       <div>
@@ -177,15 +177,15 @@ export function ContactSection() {
                       size="sm"
                       variant="ghost"
                       onClick={() => copyToClipboard("+923340698153", "phone")}
-                      className="rounded-xl hover:bg-white/10 text-muted-foreground hover:text-foreground"
+                      className="rounded-xl hover:bg-background text-muted-foreground hover:text-foreground"
                     >
-                      {copiedPhone ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                      {copiedPhone ? <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-4 h-4" />}
                     </Button>
                   </div>
 
                   {/* Location Info */}
-                  <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-slate-950/60 border border-white/10">
-                    <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-400">
+                  <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-secondary border border-border">
+                    <div className="p-2 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
                       <MapPin className="h-4 w-4" />
                     </div>
                     <div>
@@ -198,7 +198,7 @@ export function ContactSection() {
               </div>
 
               <div className="p-4 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-center">
-                <p className="text-xs font-semibold text-indigo-300">
+                <p className="text-xs font-semibold text-indigo-700 dark:text-indigo-300">
                   ⚡ Response Time: Typically within 2-4 hours.
                 </p>
               </div>

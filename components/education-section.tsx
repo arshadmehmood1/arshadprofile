@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card"
-import { GraduationCap, Calendar, MapPin, Award } from "lucide-react"
+import { GraduationCap, Calendar, MapPin } from "lucide-react"
 
 export function EducationSection() {
   const education = [
@@ -37,9 +37,9 @@ export function EducationSection() {
 
           {/* Section Header */}
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border-purple-500/30 mb-4">
-              <GraduationCap className="w-4 h-4 text-purple-400" />
-              <span className="text-xs font-bold uppercase tracking-wider text-purple-400">Academic Background</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border-purple-500/30 bg-purple-500/10 mb-4">
+              <GraduationCap className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+              <span className="text-xs font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400">Academic Background</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground tracking-tight">
               Education & <span className="gradient-text">Qualifications</span>
@@ -54,13 +54,13 @@ export function EducationSection() {
                 {/* Glowing Node Indicator */}
                 <div
                   className={`absolute -left-[31px] sm:-left-[47px] top-1.5 w-6 h-6 rounded-full border-4 ${edu.current
-                      ? "bg-emerald-400 border-slate-950 shadow-lg shadow-emerald-500/50 animate-pulse"
-                      : "bg-indigo-500 border-slate-950 shadow-md shadow-indigo-500/30"
+                      ? "bg-emerald-500 border-background shadow-lg shadow-emerald-500/40 animate-pulse"
+                      : "bg-indigo-500 border-background shadow-md shadow-indigo-500/30"
                     }`}
                 />
 
                 <Card
-                  className={`glass-card glass-card-hover rounded-3xl p-6 border transition-all duration-300 ${edu.current ? "border-indigo-500/50 shadow-xl shadow-indigo-500/10" : "border-white/10"
+                  className={`glass-card glass-card-hover rounded-3xl p-6 border transition-all duration-300 ${edu.current ? "border-indigo-500/50 shadow-xl shadow-indigo-500/10" : "border-border"
                     }`}
                 >
                   <CardContent className="p-0">
@@ -71,16 +71,16 @@ export function EducationSection() {
                             {edu.degree}
                           </h3>
                           {edu.status && (
-                            <span className="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                            <span className="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30">
                               {edu.status}
                             </span>
                           )}
                         </div>
-                        <p className="text-sm font-semibold text-cyan-400">{edu.institution}</p>
+                        <p className="text-sm font-semibold text-indigo-600 dark:text-cyan-400">{edu.institution}</p>
                       </div>
 
-                      <div className="flex items-center gap-3 text-xs font-medium text-muted-foreground bg-slate-950/60 px-3.5 py-1.5 rounded-full border border-white/10 w-fit">
-                        <Calendar className="w-3.5 h-3.5 text-indigo-400" />
+                      <div className="flex items-center gap-3 text-xs font-medium text-muted-foreground bg-secondary px-3.5 py-1.5 rounded-full border border-border w-fit">
+                        <Calendar className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
                         {edu.period}
                       </div>
                     </div>
@@ -89,8 +89,8 @@ export function EducationSection() {
                       {edu.highlights}
                     </p>
 
-                    <div className="mt-4 pt-3 border-t border-white/5 flex items-center gap-2 text-xs text-muted-foreground">
-                      <MapPin className="w-3.5 h-3.5 text-indigo-400" />
+                    <div className="mt-4 pt-3 border-t border-border/50 flex items-center gap-2 text-xs text-muted-foreground">
+                      <MapPin className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
                       <span>{edu.location}</span>
                     </div>
                   </CardContent>

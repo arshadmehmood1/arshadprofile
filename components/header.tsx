@@ -67,8 +67,8 @@ export function Header() {
         <div
           className={`flex items-center justify-between mx-auto px-5 py-2.5 rounded-full transition-all duration-500 ${
             isScrolled
-              ? "glass-panel border-white/10 shadow-2xl shadow-indigo-500/10 backdrop-blur-xl"
-              : "bg-background/40 backdrop-blur-md border border-white/5"
+              ? "glass-panel border-border shadow-xl shadow-indigo-500/10 backdrop-blur-xl"
+              : "bg-background/60 backdrop-blur-md border border-border/40"
           }`}
         >
           {/* Logo */}
@@ -77,8 +77,8 @@ export function Header() {
             className="flex items-center gap-2 group text-left"
           >
             <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-blue-500 to-cyan-400 p-0.5 flex items-center justify-center shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-300">
-              <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-                <Sparkles className="w-4 h-4 text-cyan-400 group-hover:rotate-12 transition-transform duration-300" />
+              <div className="w-full h-full bg-background rounded-[10px] flex items-center justify-center">
+                <Sparkles className="w-4 h-4 text-cyan-500 dark:text-cyan-400 group-hover:rotate-12 transition-transform duration-300" />
               </div>
             </div>
             <span className="font-extrabold text-lg text-foreground tracking-tight group-hover:text-primary transition-colors">
@@ -87,7 +87,7 @@ export function Header() {
           </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1 bg-secondary/50 p-1.5 rounded-full border border-white/5">
+          <nav className="hidden md:flex items-center gap-1 bg-secondary/60 p-1.5 rounded-full border border-border/40">
             {navItems.map((item) => {
               const isActive = activeSection === item.id
               return (
@@ -96,8 +96,8 @@ export function Header() {
                   onClick={() => scrollToSection(item.href)}
                   className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 relative ${
                     isActive
-                      ? "text-white bg-primary shadow-md shadow-indigo-500/30 font-semibold"
-                      : "text-muted-foreground hover:text-foreground hover:bg-white/5"
+                      ? "text-primary-foreground bg-primary shadow-md shadow-indigo-500/25 font-semibold"
+                      : "text-muted-foreground hover:text-foreground hover:bg-secondary"
                   }`}
                 >
                   {item.label}
@@ -112,7 +112,7 @@ export function Header() {
               variant="outline"
               size="sm"
               onClick={() => window.open("/cv", "_blank")}
-              className="hidden lg:flex items-center gap-2 text-xs font-semibold rounded-full border-primary/40 bg-primary/10 hover:bg-primary hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/25"
+              className="hidden lg:flex items-center gap-2 text-xs font-semibold rounded-full border-primary/40 bg-primary/10 hover:bg-primary hover:text-primary-foreground transition-all duration-300 shadow-sm"
             >
               <FileText className="w-3.5 h-3.5" />
               CV / Resume
@@ -122,7 +122,7 @@ export function Header() {
               variant="ghost"
               size="icon"
               asChild
-              className="rounded-full hover:bg-white/10 text-muted-foreground hover:text-foreground transition-transform hover:scale-110"
+              className="rounded-full hover:bg-secondary text-muted-foreground hover:text-foreground transition-transform hover:scale-110"
             >
               <a
                 href="https://github.com/arshadmehmood1"
@@ -138,7 +138,7 @@ export function Header() {
               variant="ghost"
               size="icon"
               asChild
-              className="rounded-full hover:bg-white/10 text-muted-foreground hover:text-foreground transition-transform hover:scale-110"
+              className="rounded-full hover:bg-secondary text-muted-foreground hover:text-foreground transition-transform hover:scale-110"
             >
               <a
                 href="https://www.linkedin.com/in/arshad-mehmood-a0075b375"
@@ -155,10 +155,10 @@ export function Header() {
                 variant="ghost"
                 size="icon"
                 onClick={toggleTheme}
-                className="rounded-full hover:bg-white/10 text-muted-foreground hover:text-foreground transition-transform hover:scale-110"
+                className="rounded-full hover:bg-secondary text-muted-foreground hover:text-foreground transition-transform hover:scale-110"
                 aria-label="Toggle theme"
               >
-                {theme === "dark" ? <Sun className="h-4 w-4 text-amber-400" /> : <Moon className="h-4 w-4 text-indigo-400" />}
+                {theme === "dark" ? <Sun className="h-4 w-4 text-amber-400" /> : <Moon className="h-4 w-4 text-indigo-600" />}
               </Button>
             )}
 
@@ -166,7 +166,7 @@ export function Header() {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden rounded-full hover:bg-white/10"
+              className="md:hidden rounded-full hover:bg-secondary"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -176,7 +176,7 @@ export function Header() {
 
         {/* Mobile Navigation Drawer */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-3 p-4 glass-panel rounded-2xl border border-white/10 shadow-2xl animate-fade-in-up">
+          <div className="md:hidden mt-3 p-4 glass-panel rounded-2xl border border-border shadow-2xl animate-fade-in-up">
             <nav className="flex flex-col space-y-2">
               {navItems.map((item) => (
                 <button
@@ -184,8 +184,8 @@ export function Header() {
                   onClick={() => scrollToSection(item.href)}
                   className={`w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-colors ${
                     activeSection === item.id
-                      ? "bg-primary text-white font-semibold"
-                      : "text-muted-foreground hover:text-foreground hover:bg-white/5"
+                      ? "bg-primary text-primary-foreground font-semibold"
+                      : "text-muted-foreground hover:text-foreground hover:bg-secondary"
                   }`}
                 >
                   {item.label}
@@ -196,7 +196,7 @@ export function Header() {
                   window.open("/cv", "_blank")
                   setIsMobileMenuOpen(false)
                 }}
-                className="w-full mt-2 font-semibold rounded-xl bg-primary text-white flex items-center justify-center gap-2"
+                className="w-full mt-2 font-semibold rounded-xl bg-primary text-primary-foreground flex items-center justify-center gap-2"
               >
                 <FileText className="w-4 h-4" />
                 View CV / Resume

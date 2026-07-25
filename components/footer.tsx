@@ -11,7 +11,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="relative border-t border-white/10 bg-slate-950/80 backdrop-blur-xl py-12">
+    <footer className="relative border-t border-border bg-background/80 backdrop-blur-xl py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         <div className="max-w-5xl mx-auto flex flex-col items-center gap-8">
           
@@ -19,8 +19,8 @@ export function Footer() {
           <div className="w-full flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-600 via-blue-500 to-cyan-400 p-0.5 flex items-center justify-center">
-                <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-                  <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+                <div className="w-full h-full bg-background rounded-[10px] flex items-center justify-center">
+                  <Sparkles className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
                 </div>
               </div>
               <span className="font-extrabold text-base text-foreground tracking-tight">
@@ -32,7 +32,7 @@ export function Footer() {
               onClick={scrollToTop}
               size="icon"
               variant="outline"
-              className="rounded-full glass-card border-white/10 hover:bg-white/10 text-muted-foreground hover:text-foreground transition-transform hover:scale-110"
+              className="rounded-full glass-card border-border hover:bg-secondary text-muted-foreground hover:text-foreground transition-transform hover:scale-110"
               aria-label="Back to Top"
             >
               <ArrowUp className="w-4 h-4" />
@@ -45,7 +45,7 @@ export function Footer() {
               href="https://github.com/arshadmehmood1"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-2xl glass-card border-white/10 hover:border-indigo-500/50 hover:bg-white/10 text-muted-foreground hover:text-foreground transition-all duration-300 hover:scale-110"
+              className="p-3 rounded-2xl glass-card border-border hover:border-primary/50 hover:bg-secondary text-muted-foreground hover:text-foreground transition-all duration-300 hover:scale-110"
               aria-label="GitHub Profile"
             >
               <Github className="w-5 h-5" />
@@ -54,14 +54,14 @@ export function Footer() {
               href="https://www.linkedin.com/in/arshad-mehmood-a0075b375"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-2xl glass-card border-white/10 hover:border-indigo-500/50 hover:bg-white/10 text-muted-foreground hover:text-foreground transition-all duration-300 hover:scale-110"
+              className="p-3 rounded-2xl glass-card border-border hover:border-primary/50 hover:bg-secondary text-muted-foreground hover:text-foreground transition-all duration-300 hover:scale-110"
               aria-label="LinkedIn Profile"
             >
               <Linkedin className="w-5 h-5" />
             </a>
             <a
               href="mailto:arshadmehm3273@gmail.com"
-              className="p-3 rounded-2xl glass-card border-white/10 hover:border-indigo-500/50 hover:bg-white/10 text-muted-foreground hover:text-foreground transition-all duration-300 hover:scale-110"
+              className="p-3 rounded-2xl glass-card border-border hover:border-primary/50 hover:bg-secondary text-muted-foreground hover:text-foreground transition-all duration-300 hover:scale-110"
               aria-label="Send Email"
             >
               <Mail className="w-5 h-5" />

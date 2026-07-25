@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Download, Mail, Phone, MapPin, Globe, Github, Linkedin, ArrowLeft } from "lucide-react"
+import { Download, Mail, Phone, MapPin, Github, ArrowLeft } from "lucide-react"
 
 export default function CVPage() {
   const handlePrint = () => {
@@ -9,20 +9,20 @@ export default function CVPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 py-6 px-4">
+    <div className="min-h-screen bg-background text-foreground py-6 px-4 transition-colors duration-300">
       {/* Top Header Bar - Hidden in Print */}
-      <div className="print:hidden max-w-4xl mx-auto mb-6 flex justify-between items-center bg-slate-900/80 backdrop-blur-md p-4 rounded-2xl border border-slate-800 shadow-xl">
+      <div className="print:hidden max-w-4xl mx-auto mb-6 flex justify-between items-center glass-panel p-4 rounded-2xl border border-border shadow-xl">
         <Button 
           variant="ghost" 
           onClick={() => window.location.href = "/"} 
-          className="text-slate-300 hover:text-white hover:bg-slate-800"
+          className="text-foreground hover:bg-secondary"
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to Portfolio
         </Button>
         
         <div className="flex items-center gap-3">
-          <Button onClick={handlePrint} className="bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl px-5">
+          <Button onClick={handlePrint} className="bg-primary hover:opacity-90 text-primary-foreground font-semibold rounded-xl px-5">
             <Download className="mr-2 h-4 w-4" />
             Print / Save as PDF
           </Button>
@@ -193,4 +193,3 @@ export default function CVPage() {
     </div>
   )
 }
-
