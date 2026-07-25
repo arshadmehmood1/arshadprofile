@@ -1,6 +1,8 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Moon, Sun, Menu, X, Github, Linkedin, FileText, Sparkles } from "lucide-react"
 import { useTheme } from "@/components/theme-provider"
@@ -10,6 +12,7 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
   const [mounted, setMounted] = useState(false)
+  const pathname = usePathname()
   const { theme, toggleTheme } = useTheme()
 
   useEffect(() => {
@@ -17,10 +20,12 @@ export function Header() {
   }, [])
 
   useEffect(() => {
+    if (pathname !== "/") return
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40)
 
-      const sections = ["home", "about", "skills", "projects", "journal", "education", "contact"]
+      const sections = ["home", "about", "skills", "projects", "education", "contact"]
       const scrollPosition = window.scrollY + 200
 
       for (const section of sections) {
@@ -38,23 +43,33 @@ export function Header() {
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  }, [pathname])
 
   const navItems = [
-    { href: "#home", label: "Home", id: "home" },
-    { href: "#about", label: "About", id: "about" },
-    { href: "#skills", label: "Skills", id: "skills" },
-    { href: "#projects", label: "Projects", id: "projects" },
-    { href: "#journal", label: "Journal", id: "journal" },
-    { href: "#education", label: "Education", id: "education" },
-    { href: "#contact", label: "Contact", id: "contact" },
+    { href: "/#home", label: "Home", id: "home" },
+    { href: "/#about", label: "About", id: "about" },
+    { href: "/#skills", label: "Skills", id: "skills" },
+    { href: "/#projects", label: "Projects", id: "projects" },
+    { href: "/journal", label: "Journal", id: "journal", isPage: true },
+    { href: "/#education", label: "Education", id: "education" },
+    { href: "/#contact", label: "Contact", id: "contact" },
   ]
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-      setIsMobileMenuOpen(false)
+  const handleNavClick = (href: string, isPage?: boolean) => {
+    setIsMobileMenuOpen(false)
+    if (isPage) {
+      window.location.href = href
+      return
+    }
+
+    if (pathname === "/") {
+      const hash = href.replace("/", "")
+      const element = document.querySelector(hash)
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" })
+      }
+    } else {
+      window.location.href = href
     }
   }
 
@@ -73,8 +88,8 @@ export function Header() {
           }`}
         >
           {/* Logo */}
-          <button 
-            onClick={() => scrollToSection("#home")} 
+          <Link 
+            href="/" 
             className="flex items-center gap-2 group text-left"
           >
             <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-blue-500 to-cyan-400 p-0.5 flex items-center justify-center shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-300">
@@ -85,16 +100,19 @@ export function Header() {
             <span className="font-extrabold text-lg text-foreground tracking-tight group-hover:text-primary transition-colors">
               Arshad<span className="gradient-text">.dev</span>
             </span>
-          </button>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1 bg-secondary/60 p-1.5 rounded-full border border-border/40">
             {navItems.map((item) => {
-              const isActive = activeSection === item.id
+              const isActive = item.isPage 
+                ? pathname.startsWith("/journal") 
+                : pathname === "/" && activeSection === item.id
+
               return (
                 <button
                   key={item.href}
-                  onClick={() => scrollToSection(item.href)}
+                  onClick={() => handleNavClick(item.href, item.isPage)}
                   className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 relative ${
                     isActive
                       ? "text-primary-foreground bg-primary shadow-md shadow-indigo-500/25 font-semibold"
@@ -179,19 +197,25 @@ export function Header() {
         {isMobileMenuOpen && (
           <div className="md:hidden mt-3 p-4 glass-panel rounded-2xl border border-border shadow-2xl animate-fade-in-up">
             <nav className="flex flex-col space-y-2">
-              {navItems.map((item) => (
-                <button
-                  key={item.href}
-                  onClick={() => scrollToSection(item.href)}
-                  className={`w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-colors ${
-                    activeSection === item.id
-                      ? "bg-primary text-primary-foreground font-semibold"
-                      : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
+              {navItems.map((item) => {
+                const isActive = item.isPage 
+                  ? pathname.startsWith("/journal") 
+                  : pathname === "/" && activeSection === item.id
+
+                return (
+                  <button
+                    key={item.href}
+                    onClick={() => handleNavClick(item.href, item.isPage)}
+                    className={`w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                      isActive
+                        ? "bg-primary text-primary-foreground font-semibold"
+                        : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                )
+              })}
               <Button
                 onClick={() => {
                   window.open("/cv", "_blank")
