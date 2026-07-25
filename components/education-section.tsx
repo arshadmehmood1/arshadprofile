@@ -13,12 +13,12 @@ export function EducationSection() {
       highlights: "Focus on AI Architectures, Web Systems, Edge Computing, and Data Structures."
     },
     {
-      degree: "Intermediate (FSc Pre-Engineering)",
+      degree: "Intermediate (ICS - Computer Science)",
       institution: "Standard College",
       period: "Completed",
       location: "Toba Tek Singh, Pakistan",
       current: false,
-      highlights: "Strong foundational mathematics, physics, and computer logic."
+      highlights: "Strong foundational computer science, mathematics, statistics, and programming logic."
     },
     {
       degree: "Matriculation (Science)",
